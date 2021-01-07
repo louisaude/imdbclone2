@@ -1,0 +1,8 @@
+<body>
+  <h1>test index</h1>
+  <ul>
+    <% @movies.each do |movie| %>
+      <li><%= movie.title %> <%= movie.genre %> <%= movie.plot %></li>
+    <% end %>
+  </ul>
+</body>

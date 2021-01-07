@@ -1,0 +1,9 @@
+<%= simple_form_for @movie do |f| %>
+  <%= f.input :title %>
+  <%= f.input :plot %>
+  <%= f.input :genre, collection: Movie::GENRE, label: "Category (please choose one of the given options)"    %>
+  <%= f.submit "Add", class: "btn devise-button" %>
+<% end %>
+
+<%= link_to "Movies list", movies_path %>
+
