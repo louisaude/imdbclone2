@@ -4,4 +4,6 @@
   <%= @movie.id %>
   <%= @movie.plot %>
   <%= @movie.genre %>
+  <%= link_to "Edit info", movie_path(@movie), method: :put %>
+  <%= link_to "Delete movie", movie_path(@movie), method: :delete %>
 </body>
