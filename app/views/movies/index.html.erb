@@ -2,7 +2,11 @@
   <h1>test index</h1>
   <ul>
     <% @movies.each do |movie| %>
-      <li><%= movie.title %> <%= movie.genre %> <%= movie.plot %> <%= link_to "Delete movie", movie_path(movie), method: :delete %></li>
+      <li>
+        <%= movie.title %> <%= movie.genre %> <%= movie.plot %> 
+        <%= link_to "More info", movie_path(movie), method: :get %>
+        <%= link_to "Delete movie", movie_path(movie), method: :delete %>
+      </li>
     <% end %>
   </ul>
 </body>
