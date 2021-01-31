@@ -1,0 +1,7 @@
+<body>
+  <h1>test show page</h1>
+  <%= @user.first_name%>
+  <%= @user.email %>
+  <%= @user.city %>
+  <%= link_to "Edit user", edit_user_registration_path(current_user), method: :get %>
+</body>
