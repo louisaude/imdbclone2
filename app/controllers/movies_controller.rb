@@ -18,7 +18,6 @@ class MoviesController < ApplicationController
   def update
     @movie.update(movie_params)
     if @movie.update(movie_params)
-      redirect_to movie_path(@movie)
     else
       render :edit
     end
