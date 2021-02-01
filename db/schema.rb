@@ -10,10 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_27_222024) do
+ActiveRecord::Schema.define(version: 2021_02_01_144103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "artists", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_artists_on_user_id"
+  end
+
+  create_table "casts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "movie_id", null: false
+    t.index ["movie_id"], name: "index_casts_on_movie_id"
+  end
+
+  create_table "credits", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "artist_id", null: false
+    t.bigint "cast_id", null: false
+    t.index ["artist_id"], name: "index_credits_on_artist_id"
+    t.index ["cast_id"], name: "index_credits_on_cast_id"
+  end
+
+  create_table "list_entries", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
@@ -21,6 +54,15 @@ ActiveRecord::Schema.define(version: 2021_01_27_222024) do
     t.string "genre"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "movie_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["movie_id"], name: "index_reviews_on_movie_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,4 +79,10 @@ ActiveRecord::Schema.define(version: 2021_01_27_222024) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "artists", "users"
+  add_foreign_key "casts", "movies"
+  add_foreign_key "credits", "artists"
+  add_foreign_key "credits", "casts"
+  add_foreign_key "reviews", "movies"
+  add_foreign_key "reviews", "users"
 end
