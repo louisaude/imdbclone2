@@ -4,5 +4,8 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :movies, only: [:new, :index, :create, :show, :destroy, :edit, :update]
   resources :users, only: [:show, :edit, :update]
+  resources :lists, only: [:new, :create, :show, :index] do 
+    resources :list_entries 
+  end
 
 end

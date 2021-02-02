@@ -1,0 +1,5 @@
+<h1>Entries index</h1>
+<% @list_entries.each do |entry| %>
+  <%= entry.comment %>
+<% end %>
+<%= link_to "new entry", new_list_list_entry_path, method: :get %>

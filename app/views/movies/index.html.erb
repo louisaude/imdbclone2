@@ -3,7 +3,7 @@
   <ul>
     <% @movies.each do |movie| %>
       <li>
-        <%= movie.title %> <%= movie.genre %> <%= movie.plot %> 
+       <%= movie.id %> <%=''%><%= movie.title %> <%= movie.genre %> <%= movie.plot %> 
         <%= link_to "More info", movie_path(movie), method: :get %>
         <%= link_to "Delete movie", movie_path(movie), method: :delete %>
       </li>
