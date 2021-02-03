@@ -1,7 +1,11 @@
 <h1>Entries index</h1>
 <% @list_entries.each do |entry| %>
+<ul>
   <%= entry.id %>
   <%= entry.comment %>
-  <%# <%= link_to "Delete entry", list_list_entry_path(entry), method: :delete   %> %>
-<% end %>
+
+  <%= link_to "show entry", list_list_entry_path(@list, entry), method: :get %>
+  <%= link_to "Delete entry", list_list_entry_path(@list, entry), method: :delete %>
+</ul>
 <%= link_to "new entry", new_list_list_entry_path, method: :get %>
+<% end %>

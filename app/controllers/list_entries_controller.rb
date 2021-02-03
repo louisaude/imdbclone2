@@ -1,6 +1,6 @@
 class ListEntriesController < ApplicationController
 
-  before_action :find_list, only: [:index, :create, :show, :new]
+  before_action :find_list, only: [:index, :create, :show, :new, :destroy]
   def new
     @list_entry = ListEntry.new
   end
@@ -8,12 +8,13 @@ class ListEntriesController < ApplicationController
   def index
     @list_entries = ListEntry.where(list: @list)
   end
+
   def show
     @list_entry = ListEntry.find(params[:id])
   end
 
   def destroy
-    @list_entry = ListEntry.find(params[:list_id])
+    @list_entry = ListEntry.find(params[:id])
     @list_entry.destroy
     redirect_to list_list_entries_path
   end
@@ -22,7 +23,7 @@ class ListEntriesController < ApplicationController
     @list_entry = ListEntry.new(entry_params)
     @list_entry.list_id = params[:list_id]
     if @list_entry.save
-      redirect_to root_path
+    redirect_to list_list_entries_path
     else
       render 'new'
     end
