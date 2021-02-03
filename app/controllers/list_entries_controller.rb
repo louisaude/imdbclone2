@@ -37,5 +37,4 @@ class ListEntriesController < ApplicationController
   def entry_params
     params.require(:list_entry).permit(:comment, :movie_id)
   end
-
 end
