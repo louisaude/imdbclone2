@@ -9,6 +9,7 @@ class ListEntriesController < ApplicationController
     @list_entries = ListEntry.where(list: @list)
   end
   def show
+    @list_entry = ListEntry.find(params[:id])
   end
 
   def destroy
