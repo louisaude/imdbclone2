@@ -1,0 +1,8 @@
+<h1>list entry show</h1>
+
+<%= @list_entry.id %>
+<%= @list_entry.comment %>
+<%= link_to "show entry", list_list_entry_path(@list.id), method: :get %>
+<%= link_to "delete entry", list_list_entry_path(@list.id), method: :delete %>
+
+
