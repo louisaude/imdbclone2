@@ -6,6 +6,7 @@
   <%= list.user.email %>
   <%= link_to "Show entries", list_list_entries_path(list), method: :get %>
   <%= link_to "Display list", list_path(list), method: :get %>
+  <%= link_to "Delete list", list_path(list), method: :delete %>
 </ul>
 <% end %>
 

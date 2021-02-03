@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :find_list, only: [:show]
+  before_action :find_list, only: [:show, :destroy]
   def  new
     @list = List.new
   end
@@ -10,7 +10,6 @@ class ListsController < ApplicationController
   end
 
   def create 
-    
     @list = List.new(lists_params)
     @list.user = current_user
     if @list.save
@@ -19,6 +18,12 @@ class ListsController < ApplicationController
     render 'new'
     end
   end
+
+  def destroy
+    @list.destroy
+    redirect_to lists_path
+  end
+
 
   def show
     @entries = @list.list_entries.all 
